@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="no-js scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francisco Garcia — Desenvolvedor Web | Portefólio</title>
+    <meta name="description" content="Portefólio de Francisco Garcia, desenvolvedor web e fundador da CISD Soluções. Websites institucionais e sistemas web modernos, funcionais e responsivos, em Luanda.">
+    <meta name="author" content="Francisco Garcia">
+    <meta name="theme-color" content="#0B1020">
+
+    <meta property="og:title" content="Francisco Garcia — Desenvolvedor Web">
+    <meta property="og:description" content="Websites institucionais e sistemas web modernos, funcionais e responsivos. Conheça os projectos CISD Soluções, KWATISA e outros.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:image" content="assets/images/profile/francisco-garcia.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
+
+    <!-- Imagem do hero: pré-carregada por ser o maior elemento do primeiro ecrã -->
+    <link rel="preload" as="image" href="assets/images/profile/francisco-garcia.webp" type="image/webp">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Design System: tokens primeiro, depois componentes -->
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Tailwind CSS (Play CDN) — usado para grelha e layout.
+         As cores apontam para os tokens CSS de tokens.css (fonte única). -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const token = (name) => `rgb(var(--${name}-rgb) / <alpha-value>)`;
+        tailwind.config = {
+            corePlugins: { container: false },
+            theme: {
+                extend: {
+                    colors: {
+                        bg: token('color-bg'),
+                        surface: token('color-surface'),
+                        elevated: token('color-surface-elevated'),
+                        line: token('color-border'),
+                        primary: { DEFAULT: token('color-primary'), hover: token('color-primary-hover'), text: token('color-primary-text') },
+                        secondary: token('color-secondary'),
+                        ink: { DEFAULT: token('color-text'), muted: token('color-text-secondary'), subtle: token('color-text-tertiary') },
+                        cisd: token('brand-cisd-navy'),
+                    },
+                    fontFamily: {
+                        display: ['var(--font-display)'],
+                        body: ['var(--font-body)'],
+                        mono: ['var(--font-mono)'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body>
+    <a href="#conteudo" class="skip-link">Saltar para o conteúdo</a>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header>
+        <nav id="navbar" class="navbar" aria-label="Navegação principal">
+            <div class="wrap navbar__inner">
+                <a href="#inicio" class="navbar__brand" aria-label="Francisco Garcia — início">
+                    <span class="navbar__mark" aria-hidden="true">FG</span>
+                    Francisco Garcia
+                </a>
+
+                <ul class="navbar__links">
+                    <li><a href="#inicio" class="nav-link" data-nav="inicio">Início</a></li>
+                    <li><a href="#sobre" class="nav-link" data-nav="sobre">Sobre</a></li>
+                    <li><a href="#formacao" class="nav-link" data-nav="formacao">Formação</a></li>
+                    <li><a href="#servicos" class="nav-link" data-nav="servicos">Serviços</a></li>
+                    <li><a href="#portfolio" class="nav-link" data-nav="portfolio">Projectos</a></li>
+                    <li><a href="#diferenciais" class="nav-link" data-nav="diferenciais">Porquê eu</a></li>
+                    <li><a href="#contacto" class="nav-link" data-nav="contacto">Contacto</a></li>
+                </ul>
+
+                <a href="#contacto" class="btn btn--primary btn--sm navbar__cta">
+                    <span class="btn__label">Vamos conversar</span>
+                </a>
+
+                <button id="abrirMenu" type="button" class="navbar__toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="mobile-menu" inert>
+            <div class="mobile-menu__backdrop" data-menu-close></div>
+            <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+                <div class="mobile-menu__head">
+                    <span class="navbar__brand"><span class="navbar__mark" aria-hidden="true">FG</span> Menu</span>
+                    <button id="fecharMenu" type="button" class="navbar__toggle" aria-label="Fechar menu de navegação">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul class="mobile-menu__list">
+                    <li><a href="#inicio" class="mobile-nav-link" data-nav="inicio">Início</a></li>
+                    <li><a href="#sobre" class="mobile-nav-link" data-nav="sobre">Sobre</a></li>
+                    <li><a href="#formacao" class="mobile-nav-link" data-nav="formacao">Formação</a></li>
+                    <li><a href="#servicos" class="mobile-nav-link" data-nav="servicos">Serviços</a></li>
+                    <li><a href="#portfolio" class="mobile-nav-link" data-nav="portfolio">Projectos</a></li>
+                    <li><a href="#diferenciais" class="mobile-nav-link" data-nav="diferenciais">Porquê eu</a></li>
+                    <li><a href="#contacto" class="mobile-nav-link" data-nav="contacto">Contacto</a></li>
+                </ul>
+                <a href="#contacto" class="btn btn--primary btn--block mobile-nav-link-cta"><span class="btn__label">Vamos conversar</span></a>
+                <div class="flex items-center gap-3">
+                    <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub de Francisco Garcia (abre num novo separador)"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/francisco-garcia-98b595246/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn de Francisco Garcia (abre num novo separador)"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/franccisco04/?hl=pt" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Instagram de Francisco Garcia (abre num novo separador)"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <!-- ===================== HERO ===================== -->
+        <section id="inicio" class="hero" aria-labelledby="titulo-hero">
+            <div class="hero__glow hero__glow--a" aria-hidden="true"></div>
+            <div class="hero__glow hero__glow--b" aria-hidden="true"></div>
+
+            <div class="wrap relative grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-12 items-center">
+                <div data-reveal>
+                    <p class="eyebrow">Técnico Informático, Infraestrutura & Desenvolvedor Web · Fundador da CISD Soluções</p>
+                    <h1 id="titulo-hero" class="t-display">
+                        Tecnologia, Infraestrutura & Desenvolvimento Web<span class="t-accent">.</span>
+                    </h1>
+                    <p class="t-lead mt-6 max-w-xl">
+                        Olá, sou o <strong class="text-ink font-semibold">Francisco Garcia</strong>. Entre a infraestrutura que sustenta os sistemas e as soluções digitais que aproximam pessoas e negócios, desenvolvo e implemento soluções tecnológicas que fazem a diferença. Atuo na administração de sistemas, infraestrutura informática, redes e desenvolvimento web, unindo visão técnica, criatividade e atenção ao detalhe para transformar desafios em soluções funcionais, seguras e eficientes.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mt-9">
+                        <a href="#portfolio" class="btn btn--primary">
+                            <span class="btn__label">Ver projectos</span>
+                            <i class="fa-solid fa-arrow-right btn__icon btn__icon--move" aria-hidden="true"></i>
+                        </a>
+                        <a href="#contacto" class="btn btn--outline">
+                            <span class="btn__label">Falar comigo</span>
+                        </a>
+                        <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" aria-label="GitHub de Francisco Garcia (abre num novo separador)">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            <span class="btn__label">GitHub</span>
+                        </a>
+                    </div>
+
+                    <div class="hero__quick">
+                        <span class="t-caption mr-1">Projectos em destaque:</span>
+                        <a href="#projecto-cisd" class="quick-link"><span class="quick-link__dot quick-link__dot--cisd" aria-hidden="true"></span>CISD Soluções</a>
+                        <a href="#projecto-kwatisa" class="quick-link"><span class="quick-link__dot quick-link__dot--kwatisa" aria-hidden="true"></span>KWATISA</a>
+                    </div>
+                </div>
+
+                <div class="hero__portrait" data-reveal data-reveal-delay="150">
+                    <span class="hero__accent" aria-hidden="true"></span>
+                    <div class="hero__frame">
+                        <picture>
+                            <source srcset="assets/images/profile/francisco-garcia.webp" type="image/webp">
+                            <img src="assets/images/profile/francisco-garcia.png"
+                                 alt="Francisco Garcia, de camisa clara, gravata azul e óculos, a ajustar a gravata"
+                                 width="800" height="1000" fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
+
+                    <!-- Assinatura visual: cartão "terminal" -->
+                    <div class="hero__terminal" aria-hidden="true">
+                        <div class="hero__terminal-bar">
+                            <span style="background:var(--color-error-text)"></span>
+                            <span style="background:var(--color-secondary)"></span>
+                            <span style="background:var(--color-success-text)"></span>
+                            <span class="ml-auto t-caption" style="width:auto;height:auto;border-radius:0">dev.js</span>
+                        </div>
+                        <div class="hero__terminal-body">
+                            <p><span class="tok-key">const</span> <span class="tok-var">developer</span> = {</p>
+                            <p class="pl-4">name: <span id="typedName" class="tok-str"></span><span class="caret"></span></p>
+                            <p class="pl-4">stack: <span class="tok-str">"web"</span>,</p>
+                            <p>};</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SOBRE ===================== -->
+        <section id="sobre" class="section section--tinted" aria-labelledby="titulo-sobre">
+            <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <figure class="about__frame" data-reveal>
+                    <picture>
+                        <source srcset="assets/images/profile/sobre.webp" type="image/webp">
+                        <img src="assets/images/profile/sobre.png"
+                             alt="Francisco Garcia, de camisa verde e óculos, sentado à secretária em frente ao portátil"
+                             width="800" height="800" loading="lazy" decoding="async">
+                    </picture>
+                </figure>
+
+                <article data-reveal data-reveal-delay="150">
+                    <p class="eyebrow">Sobre mim</p>
+                    <h2 id="titulo-sobre" class="t-h2 mb-6">Muito prazer, sou o Francisco Garcia</h2>
+
+                    <div class="space-y-5 t-body">
+                        <p>
+                            Sou Técnico Informático, Infraestrutura & Desenvolvedor Web, com paixão por tecnologia e inovação. Atuo na administração de sistemas, manutenção de equipamentos, configuração de redes e desenvolvimento de soluções web modernas, funcionais e responsivas. Transformo necessidades tecnológicas em soluções eficientes, com foco na performance, segurança, acessibilidade e usabilidade.
+                        </p>
+                        <p>
+                            Sou também fundador e CEO da <strong class="text-ink font-semibold">CISD Soluções</strong>,
+                            empresa de tecnologia e telecomunicações sediada em Luanda, onde actuo em sistemas
+                            informáticos, administração de sistemas e desenvolvimento web — conto com quatro anos
+                            de experiência em tecnologia.
+                        </p>
+                        <p>
+                            Mantenho-me em constante atualização profissional, acompanhando a evolução tecnológica e aprimorando continuamente as minhas competências em informática, infraestrutura e desenvolvimento web e mais.
+                        </p>
+                    </div>
+
+                    <aside class="card mt-8 border-l-4 border-l-secondary" aria-labelledby="titulo-cisd-fundador">
+                        <h3 id="titulo-cisd-fundador" class="card__title">Empresa CISD SOLUÇÕES</h3>
+                        <p class="card__text">
+                            CISD SOLUÇÕES, é uma empresa orientada para o desenvolvimento de soluções
+                            tecnológicas e digitais. Através da CISD SOLUÇÕES, trabalhamos para aproximar a tecnologia
+                            das necessidades reais de pessoas e organizações, disponibilizando soluções à medida de cada desafio.
+                        </p>
+                        <a href="https://cisdsolucoes.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm mt-5">
+                            <span class="btn__label">Conheça a CISD SOLUÇÕES</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square btn__icon" aria-hidden="true"></i>
+                            <span class="sr-only">(abre num novo separador)</span>
+                        </a>
+                    </aside>
+
+                    <div class="mt-8">
+                        <p class="t-caption mb-3">Tecnologias com que trabalho</p>
+                        <ul class="badge-list">
+                            <li class="badge">HTML5</li>
+                            <li class="badge">CSS3</li>
+                            <li class="badge">Tailwind CSS</li>
+                            <li class="badge">JavaScript</li>
+                            <li class="badge">React</li>
+                            <li class="badge">Vite</li>
+                            <li class="badge">Node.js</li>
+                            <li class="badge">MongoDB</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 mt-8">
+                        <a href="#contacto" class="btn btn--primary"><span class="btn__label">Vamos trabalhar juntos</span></a>
+                        <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Francisco Garcia (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/francisco-garcia-98b595246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Francisco Garcia (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/franccisco04/?hl=pt" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Francisco Garcia (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Experiência profissional (ordem cronológica: mais recente primeiro) -->
+            <div class="wrap mt-20" id="experiencia">
+                <div class="section-header" data-reveal>
+                    <p class="eyebrow">Percurso</p>
+                    <h2 id="titulo-experiencia" class="t-h2">Experiência profissional</h2>
+                </div>
+
+                <ol class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" aria-labelledby="titulo-experiencia">
+                    <li class="card" data-reveal>
+                        <p class="t-caption mb-3"><time datetime="2025-12">Dezembro de 2025</time> – Presente</p>
+                        <h3 class="card__title">Técnico Informático, Infraestrutura & Desenvolvedor Web</h3>
+                        <p class="t-small text-ink font-medium mb-3">Kwatisa</p>
+                        <p class="card__text">Atuação nas áreas de tecnologia da informação, infraestrutura informática e desenvolvimento web, contribuindo para a implementação, manutenção e evolução de soluções digitais e sistemas tecnológicos.</p>
+                    </li>
+                    <li class="card" data-reveal data-reveal-delay="100">
+                        <p class="t-caption mb-3"><time datetime="2022-11">Novembro de 2022</time> – Presente</p>
+                        <h3 class="card__title">CEO &amp; Founder</h3>
+                        <p class="t-small text-ink font-medium mb-3">CISD Soluçẽs</p>
+                        <p class="card__text">Responsável pela liderança e desenvolvimento estratégico da CISD SOLUÇÕES, acompanhando a conceção e desenvolvimento de soluções tecnológicas, projetos digitais e iniciativas orientadas para as necessidades dos clientes.</p>
+                    </li>
+                    <li class="card" data-reveal data-reveal-delay="200">
+                        <p class="t-caption mb-3"><time datetime="2019-01">Janeiro de 2019</time> – Presente</p>
+                        <h3 class="card__title">Assistente de Vendas & Atendimento ao Cliente</h3>
+                        <p class="t-small text-ink font-medium mb-3">Sistec S.A.</p>
+                        <p class="card__text">Atuação nas áreas de vendas, atendimento e relacionamento com clientes, prestando apoio na identificação de necessidades, apresentação de soluções e acompanhamento do processo comercial.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ===================== FORMAÇÃO E CERTIFICAÇÕES ===================== -->
+        <section id="formacao" class="section" aria-labelledby="titulo-formacao">
+            <div class="wrap">
+                <div class="section-header" data-reveal>
+                    <p class="eyebrow">Formação</p>
+                    <h2 id="titulo-formacao" class="t-h2">Formação e Certificações</h2>
+                    <p class="t-body mt-4">Aprendizagem contínua e desenvolvimento de competências nas áreas de tecnologia, administração de sistemas e gestão empresarial.</p>
+                </div>
+
+                <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" aria-labelledby="titulo-formacao">
+                    <li class="card flex flex-col" data-reveal>
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div class="card__icon !mb-0"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
+                            <span class="badge whitespace-normal">Gestão Executiva, Governança e Compliance</span>
+                        </div>
+                        <h3 class="card__title">Governança, Compliance e Gestão Financeira para Altos Executivos</h3>
+                        <ul class="mt-3 space-y-2 t-small">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-building-columns w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Instituição: </span>Academia TIS</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Localização: </span>Luanda</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-regular fa-calendar w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Período: </span><time datetime="2025-06">Junho de 2025</time></span></li>
+                        </ul>
+                    </li>
+                    <li class="card flex flex-col" data-reveal data-reveal-delay="100">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div class="card__icon !mb-0"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+                            <span class="badge whitespace-normal">Administração de Sistemas Microsoft</span>
+                        </div>
+                        <h3 class="card__title">Competências Essenciais para a Carreira em Administração de Sistemas Microsoft</h3>
+                        <ul class="mt-3 space-y-2 t-small">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-building-columns w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Instituição: </span>LinkedIn Learning</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-laptop w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Modalidade: </span>Curso online</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-regular fa-calendar w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Período: </span><time datetime="2024-09">Setembro de 2024</time></span></li>
+                        </ul>
+                    </li>
+                    <li class="card flex flex-col" data-reveal data-reveal-delay="200">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div class="card__icon !mb-0"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></div>
+                            <span class="badge whitespace-normal">Gestão e Empreendedorismo</span>
+                        </div>
+                        <h3 class="card__title">Gestão de Micro e Pequenos Negócios</h3>
+                        <ul class="mt-3 space-y-2 t-small">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-building-columns w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Instituição: </span>Academia do Empreendedor de Luanda / INEFOP</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-regular fa-calendar w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Período: </span><time datetime="2024-01">Janeiro de 2024</time></span></li>
+                        </ul>
+                    </li>
+                    <li class="card flex flex-col" data-reveal>
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div class="card__icon !mb-0"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+                            <span class="badge whitespace-normal">Redes e Infraestrutura</span>
+                        </div>
+                        <h3 class="card__title">Instalação e Configuração de Redes</h3>
+                        <ul class="mt-3 space-y-2 t-small">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-building-columns w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Instituição: </span>Centro de Formação SISTEC</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Localização: </span>Luanda</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-regular fa-calendar w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Período: </span><time datetime="2023-11">Novembro – Dezembro de 2023</time></span></li>
+                        </ul>
+                    </li>
+                    <li class="card flex flex-col" data-reveal data-reveal-delay="100">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
+                            <div class="card__icon !mb-0"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
+                            <span class="badge whitespace-normal">Hardware e Eletrónica</span>
+                        </div>
+                        <h3 class="card__title">Hardware + Eletrónica na Placa-Mãe</h3>
+                        <ul class="mt-3 space-y-2 t-small">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-building-columns w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Instituição: </span>Centro de Formação SISTEC</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Localização: </span>Luanda</span></li>
+                            <li class="flex items-start gap-2"><i class="fa-regular fa-calendar w-4 mt-1 text-ink-subtle" aria-hidden="true"></i><span><span class="sr-only">Período: </span><time datetime="2023-02">Fevereiro – Abril de 2023</time></span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===================== SERVIÇOS ===================== -->
+        <section id="servicos" class="section" aria-labelledby="titulo-servicos">
+            <div class="wrap">
+                <div class="section-header" data-reveal>
+                    <p class="eyebrow">O que eu faço</p>
+                    <h2 id="titulo-servicos" class="t-h2">Serviços</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="card card--interactive flex flex-col" id="servico-sistemas-web" data-service="Sistemas Web e Sites Institucionais" data-reveal>
+                        <div class="card__icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Sistemas Web e Sites Institucionais</h3>
+                        <p class="card__text">Desenvolvimento de websites institucionais e sistemas web modernos, responsivos e funcionais, adaptados à identidade, aos objetivos e às necessidades de cada organização.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Sistemas Web e Sites Institucionais</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Desenvolvimento de websites institucionais e sistemas web modernos, responsivos e funcionais, adaptados à identidade, aos objetivos e às necessidades de cada organização.</p>
+                            <p class="t-caption">O que pode incluir</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Website institucional de uma ou várias páginas</li>
+                                <li>Design responsivo para computador, tablet e telemóvel</li>
+                                <li>Formulário de contacto e ligação ao WhatsApp</li>
+                                <li>Publicação do website online</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Uma presença online profissional, que apresenta a sua organização com clareza e facilita o contacto de novos clientes.</p>
+                        </template>
+                    </article>
+
+                    <article class="card card--interactive flex flex-col" id="servico-comercio-eletronico" data-service="Soluções de Comércio Eletrónico" data-reveal data-reveal-delay="100">
+                        <div class="card__icon"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Soluções de Comércio Eletrónico</h3>
+                        <p class="card__text">Desenvolvimento de soluções digitais para comércio eletrónico, permitindo apresentar produtos, gerir operações comerciais e proporcionar experiências de compra online.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Soluções de Comércio Eletrónico</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Desenvolvimento de soluções digitais para comércio eletrónico, permitindo apresentar produtos, gerir operações comerciais e proporcionar experiências de compra online.</p>
+                            <p class="t-caption">O que pode incluir</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Catálogo de produtos com categorias</li>
+                                <li>Gestão de produtos e conteúdos</li>
+                                <li>Experiência de compra adaptada a dispositivos móveis</li>
+                                <li>Integração com os canais de contacto do negócio</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Um canal de vendas disponível a qualquer hora, que leva os seus produtos a mais clientes.</p>
+                        </template>
+                    </article>
+
+                    <article class="card card--interactive flex flex-col" id="servico-recursos-web" data-service="Recursos Web Personalizados" data-reveal data-reveal-delay="200">
+                        <div class="card__icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Recursos Web Personalizados</h3>
+                        <p class="card__text">Criação de funcionalidades, ferramentas e componentes web personalizados para responder a necessidades específicas de empresas e projetos digitais.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Recursos Web Personalizados</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Criação de funcionalidades, ferramentas e componentes web personalizados para responder a necessidades específicas de empresas e projetos digitais.</p>
+                            <p class="t-caption">O que pode incluir</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Funcionalidades à medida para websites existentes</li>
+                                <li>Portefólios digitais e páginas de apresentação</li>
+                                <li>Componentes e ferramentas web personalizados</li>
+                                <li>Integração de novas páginas e recursos</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Soluções feitas para o seu caso concreto, em vez de adaptar o seu negócio a ferramentas genéricas.</p>
+                        </template>
+                    </article>
+
+                    <article class="card card--interactive flex flex-col" id="servico-sistemas-infraestrutura" data-service="Sistemas e Infraestrutura" data-reveal>
+                        <div class="card__icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Sistemas e Infraestrutura</h3>
+                        <p class="card__text">Instalação e configuração de sistemas operativos, software e da base tecnológica do seu negócio.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Sistemas e Infraestrutura</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Uma infraestrutura bem montada é a base para que computadores, programas e utilizadores trabalhem sem interrupções. Este serviço trata da preparação e organização dos sistemas de que a sua equipa depende no dia a dia.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Instalação e configuração de sistemas operativos</li>
+                                <li>Instalação e configuração de software de trabalho</li>
+                                <li>Organização da infraestrutura informática do escritório</li>
+                                <li>Preparação de novos postos de trabalho</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Equipamentos e sistemas prontos a usar, configurados de forma consistente e preparados para crescer com o negócio.</p>
+                        </template>
+                    </article>
+                    <article class="card card--interactive flex flex-col" id="servico-administracao-sistemas" data-service="Administração de Sistemas" data-reveal data-reveal-delay="100">
+                        <div class="card__icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Administração de Sistemas</h3>
+                        <p class="card__text">Gestão contínua de sistemas, utilizadores e permissões para manter tudo actualizado e seguro.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Administração de Sistemas</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Depois de instalados, os sistemas precisam de acompanhamento. A administração de sistemas garante que contas, acessos, actualizações e cópias de segurança são geridos de forma organizada.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Gestão de utilizadores, contas e permissões de acesso</li>
+                                <li>Aplicação de actualizações de sistema e de segurança</li>
+                                <li>Configuração e verificação de cópias de segurança</li>
+                                <li>Acompanhamento do funcionamento dos sistemas</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Menos falhas inesperadas, dados mais protegidos e uma equipa que trabalha com os acessos certos.</p>
+                        </template>
+                    </article>
+                    <article class="card card--interactive flex flex-col" id="servico-redes" data-service="Redes" data-reveal data-reveal-delay="200">
+                        <div class="card__icon"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Redes</h3>
+                        <p class="card__text">Instalação e configuração de redes com fios e Wi-Fi, para ligações estáveis entre equipamentos.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Redes</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Uma rede fiável permite partilhar internet, ficheiros e impressoras sem quebras. Este serviço cobre a montagem, a configuração e o diagnóstico da rede do seu espaço de trabalho.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Instalação e configuração de redes com fios e Wi-Fi</li>
+                                <li>Configuração de routers e pontos de acesso</li>
+                                <li>Partilha de impressoras e ficheiros na rede</li>
+                                <li>Diagnóstico e resolução de falhas de ligação</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Ligações estáveis e organizadas, que evitam perdas de tempo e mantêm a equipa ligada.</p>
+                        </template>
+                    </article>
+                    <article class="card card--interactive flex flex-col" id="servico-hardware" data-service="Hardware" data-reveal>
+                        <div class="card__icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Hardware</h3>
+                        <p class="card__text">Diagnóstico, manutenção preventiva e correctiva e reparação de computadores.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Hardware</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Quando um computador fica lento, não liga ou apresenta avarias, é preciso perceber a causa antes de intervir. Este serviço trata do estado físico dos equipamentos, da avaliação à reparação.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Diagnóstico de computadores</li>
+                                <li>Manutenção preventiva e correctiva</li>
+                                <li>Reparação de computadores</li>
+                                <li>Aconselhamento sobre substituição ou actualização de componentes</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Equipamentos com maior vida útil e menos tempo parado por avarias.</p>
+                        </template>
+                    </article>
+                    <article class="card card--interactive flex flex-col" id="servico-email-microsoft-365" data-service="Email Corporativo e Microsoft 365" data-reveal data-reveal-delay="100">
+                        <div class="card__icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Email Corporativo e Microsoft 365</h3>
+                        <p class="card__text">E-mail com o domínio da sua empresa e configuração das ferramentas Microsoft 365.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Email Corporativo e Microsoft 365</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Um endereço de e-mail com o domínio da empresa transmite profissionalismo, e o Microsoft 365 reúne e-mail, documentos e colaboração num só lugar. Este serviço trata da configuração e do apoio na adopção destas ferramentas.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Criação e configuração de e-mail corporativo com domínio próprio</li>
+                                <li>Apoio no licenciamento Microsoft 365 e Office</li>
+                                <li>Configuração das aplicações nos equipamentos da equipa</li>
+                                <li>Consultoria em produtividade com as ferramentas Microsoft 365</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Uma comunicação com imagem profissional e uma equipa a colaborar com ferramentas bem configuradas.</p>
+                        </template>
+                    </article>
+                    <article class="card card--interactive flex flex-col" id="servico-suporte-tecnico" data-service="Suporte Técnico" data-reveal data-reveal-delay="200">
+                        <div class="card__icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Suporte Técnico</h3>
+                        <p class="card__text">Apoio na resolução de problemas informáticos do dia a dia, com acompanhamento até à solução.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-6">
+                            <button type="button" class="btn btn--outline btn--sm btn-saber-mais" aria-haspopup="dialog">
+                                <span class="btn__label">Saber mais</span><span class="sr-only"> sobre Suporte Técnico</span>
+                            </button>
+                        </div>
+                        <template class="service-detail">
+                            <p class="t-small">Problemas técnicos interrompem o trabalho. O suporte técnico ajuda a identificar a origem de cada problema, aplicar a solução adequada e acompanhar o resultado.</p>
+                            <p class="t-caption">O que inclui</p>
+                            <ul class="list-disc pl-5 space-y-1 t-small">
+                                <li>Resolução de problemas de software e de sistema</li>
+                                <li>Apoio na utilização de equipamentos e aplicações</li>
+                                <li>Configuração de periféricos, como impressoras</li>
+                                <li>Acompanhamento após a intervenção</li>
+                            </ul>
+                            <p class="t-small"><strong class="text-ink font-semibold">Valor para si:</strong> Respostas rápidas aos problemas técnicos, para que a sua equipa se concentre no que importa.</p>
+                        </template>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PROJECTOS ===================== -->
+        <section id="portfolio" class="section section--tinted" aria-labelledby="titulo-portfolio">
+            <div class="wrap">
+                <div class="section-header" data-reveal>
+                    <p class="eyebrow">Trabalhos seleccionados</p>
+                    <h2 id="titulo-portfolio" class="t-h2">Meus Projectos</h2>
+                    <p class="t-body mt-4">Projectos reais, publicados e em desenvolvimento — do website institucional à aplicação web.</p>
+                </div>
+
+                <!-- Projecto em destaque: CISD Soluções -->
+                <article id="projecto-cisd" class="project-card project-card--featured mb-8" data-reveal
+                    data-title="CISD Soluções — Website institucional"
+                    data-desc="Website institucional multipágina da CISD Soluções, empresa de tecnologia e telecomunicações sediada em Luanda. Apresenta a empresa, as quatro áreas de serviço (Hardware, Software e Sistemas, Microsoft 365 e Desenvolvimento Web), a metodologia de trabalho, o perfil do fundador e os canais de contacto, incluindo WhatsApp."
+                    data-role="Projecto próprio — concepção, desenvolvimento e publicação."
+                    data-tags="React, Vite, React Router, CSS3, Vercel"
+                    data-img="assets/images/projects/cisd.png"
+                    data-img-position="top"
+                    data-link="https://cisdsolucoes.vercel.app/">
+                    <div class="project-card__media">
+                        <span class="project-card__status badge badge--highlight"><i class="fa-solid fa-star" aria-hidden="true"></i> Projecto em destaque</span>
+                        <img src="assets/images/projects/cisd.png" loading="lazy" decoding="async" class="lazy-img" style="object-position: top center"
+                             alt="Captura de ecrã da página inicial do website CISD Soluções" width="1254" height="1254">
+                    </div>
+                    <div class="project-card__body">
+                        <p class="project-card__eyebrow">Website institucional · Tecnologia e Telecomunicações</p>
+                        <h3 class="project-card__title">CISD Soluções</h3>
+                        <p class="project-card__desc">
+                            Website multipágina para uma empresa de tecnologia e telecomunicações em Luanda. Apresenta
+                            as quatro áreas de serviço — Hardware, Software e Sistemas, Microsoft 365 e Desenvolvimento Web —,
+                            o processo de trabalho e contacto directo por WhatsApp, com uma identidade corporativa em azul-marinho e amarelo.
+                        </p>
+                        <dl class="project-card__facts">
+                            <div><dt>Contributo</dt><dd>Projecto próprio: concepção, desenvolvimento e publicação</dd></div>
+                            <div><dt>Estrutura</dt><dd>Início, Sobre, 4 páginas de serviços, Fundador e Contactos</dd></div>
+                        </dl>
+                        <ul class="badge-list">
+                            <li class="badge badge--highlight">React</li>
+                            <li class="badge">Vite</li>
+                            <li class="badge">React Router</li>
+                            <li class="badge">CSS3</li>
+                            <li class="badge">Vercel</li>
+                        </ul>
+                        <div class="project-card__actions">
+                            <a href="https://cisdsolucoes.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+                                <span class="btn__label">Visitar website</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square btn__icon" aria-hidden="true"></i>
+                                <span class="sr-only">(abre num novo separador)</span>
+                            </a>
+                            <button type="button" class="btn btn--outline btn-ver-projecto"><span class="btn__label">Detalhes</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- KWATISA -->
+                    <article id="projecto-kwatisa" class="project-card project-card--kwatisa" data-reveal
+                        data-title="KWATISA — Website institucional"
+                        data-desc="Website institucional multipágina da KWATISA, agência de marketing e tecnologia em Luanda. Apresenta a proposta de valor (estratégia, criatividade e tecnologia), sete serviços com páginas próprias — de tráfego pago e SEO a branding e análise de dados —, a metodologia de trabalho e contactos por e-mail, telefone e WhatsApp."
+                        data-role="Desenvolvimento do website institucional."
+                        data-tags="HTML5, CSS3, JavaScript, Vercel"
+                        data-img="assets/images/projects/sitekwatisa.png"
+                        data-img-position="top"
+                        data-link="https://kwatisa.vercel.app/">
+                        <div class="project-card__media">
+                            <span class="project-card__status badge badge--primary">Novo</span>
+                            <img src="assets/images/projects/sitekwatisa.png" loading="lazy" decoding="async" class="lazy-img" style="object-position: top center"
+                                 alt="Captura de ecrã da página inicial do website KWATISA" width="1440" height="1600">
+                        </div>
+                        <div class="project-card__body">
+                            <p class="project-card__eyebrow">Website institucional · Agência de marketing</p>
+                            <h3 class="project-card__title">KWATISA</h3>
+                            <p class="project-card__desc">
+                                Website multipágina para uma agência de marketing e tecnologia em Luanda, com sete serviços,
+                                metodologia de trabalho e pedido de proposta por WhatsApp.
+                            </p>
+                            <ul class="badge-list">
+                                <li class="badge badge--primary">HTML5</li>
+                                <li class="badge">CSS3</li>
+                                <li class="badge">JavaScript</li>
+                                <li class="badge">Vercel</li>
+                            </ul>
+                            <div class="project-card__actions">
+                                <a href="https://kwatisa.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+                                    <span class="btn__label">Visitar website</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square btn__icon" aria-hidden="true"></i>
+                                    <span class="sr-only">(abre num novo separador)</span>
+                                </a>
+                                <button type="button" class="btn btn--ghost btn--sm btn-ver-projecto"><span class="btn__label">Detalhes</span></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- APMCL -->
+                    <article class="project-card" data-reveal data-reveal-delay="100"
+                        data-title="APMCL — Website e Bilheteira Digital"
+                        data-desc="Website da Associação Provincial do Motocross de Luanda (APMCL), com uma interface moderna e minimalista e uma bilheteira digital integrada para gestão."
+                        data-role="Desenvolvimento do website e da bilheteira digital."
+                        data-tags="HTML5, Tailwind CSS, CSS3"
+                        data-img="assets/images/motocrossluanda.png"
+                        data-link="https://motocrossluanda.vercel.app/">
+                        <div class="project-card__media">
+                            <img src="assets/images/motocrossluanda.png" loading="lazy" decoding="async" class="lazy-img"
+                                 alt="Captura de ecrã do website da APMCL — Motocross Luanda" width="1080" height="517">
+                        </div>
+                        <div class="project-card__body">
+                            <p class="project-card__eyebrow">Website institucional · Desporto</p>
+                            <h3 class="project-card__title">Bilheteira Digital APMCL</h3>
+                            <p class="project-card__desc">Website da Associação Provincial do Motocross de Luanda, com interface moderna e minimalista e uma bilheteira digital integrada.</p>
+                            <ul class="badge-list">
+                                <li class="badge">HTML5</li>
+                                <li class="badge">Tailwind CSS</li>
+                                <li class="badge">CSS3</li>
+                            </ul>
+                            <div class="project-card__actions">
+                                <a href="https://motocrossluanda.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">
+                                    <span class="btn__label">Visitar website</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square btn__icon" aria-hidden="true"></i>
+                                    <span class="sr-only">(abre num novo separador)</span>
+                                </a>
+                                <button type="button" class="btn btn--ghost btn--sm btn-ver-projecto"><span class="btn__label">Detalhes</span></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gestor de Tarefas -->
+                    <article class="project-card" data-reveal data-reveal-delay="200"
+                        data-title="Gestor de Tarefas"
+                        data-desc="Gestor de tarefas intuitivo que permite organizar as actividades do dia a dia de forma prática e eficiente."
+                        data-role="Desenvolvimento da aplicação."
+                        data-tags=""
+                        data-img="assets/images/gestortarefas.jpg"
+                        data-link="">
+                        <div class="project-card__media">
+                            <span class="project-card__status badge"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Em breve online</span>
+                            <img src="assets/images/gestortarefas.jpg" loading="lazy" decoding="async" class="lazy-img"
+                                 alt="Imagem ilustrativa do projecto Gestor de Tarefas" width="626" height="417">
+                        </div>
+                        <div class="project-card__body">
+                            <p class="project-card__eyebrow">Aplicação web · Produtividade</p>
+                            <h3 class="project-card__title">Gestor de Tarefas</h3>
+                            <p class="project-card__desc">Gestor de tarefas intuitivo para organizar as actividades do dia a dia de forma prática e eficiente.</p>
+                            <div class="project-card__actions">
+                                <button type="button" class="btn btn--outline btn--sm btn-ver-projecto"><span class="btn__label">Detalhes</span></button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Estado vazio: mostrado pelo JS apenas se não houver nenhum projecto -->
+                <div id="projectsEmpty" class="empty-state" hidden>
+                    <i class="fa-regular fa-folder-open empty-state__icon" aria-hidden="true"></i>
+                    <p class="t-h3">Ainda não há projectos publicados</p>
+                    <p class="t-small">Os próximos trabalhos vão aparecer aqui. Entretanto, veja o meu <a class="link" href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 mt-12 pt-8 border-t border-line" data-reveal>
+                    <p class="t-small">Mais código e experiências no meu GitHub.</p>
+                    <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--sm">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                        <span class="btn__label">github.com/FranciscoGrcia</span>
+                        <span class="sr-only">(abre num novo separador)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== DIFERENCIAIS ===================== -->
+        <section id="diferenciais" class="section" aria-labelledby="titulo-diferenciais">
+            <div class="wrap">
+                <div class="section-header" data-reveal>
+                    <p class="eyebrow">Diferenciais</p>
+                    <h2 id="titulo-diferenciais" class="t-h2">Porquê trabalhar comigo?</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <article class="card card--interactive" data-reveal>
+                        <div class="card__icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Foco em resultados</h3>
+                        <p class="card__text">A minha prioridade é entregar soluções funcionais, escaláveis e bem estruturadas.</p>
+                    </article>
+                    <article class="card card--interactive" data-reveal data-reveal-delay="100">
+                        <div class="card__icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Qualidade e prazos</h3>
+                        <p class="card__text">Organização e responsabilidade garantem entregas dentro do prazo.</p>
+                    </article>
+                    <article class="card card--interactive" data-reveal data-reveal-delay="200">
+                        <div class="card__icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Capacidade de adaptação</h3>
+                        <p class="card__text">Mantenho-me actualizado com novas ferramentas e boas práticas.</p>
+                    </article>
+                    <article class="card card--interactive" data-reveal data-reveal-delay="300">
+                        <div class="card__icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
+                        <h3 class="card__title">Comunicação clara</h3>
+                        <p class="card__text">Um bom projecto nasce do diálogo. Mantenho uma comunicação transparente e eficaz.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACTO ===================== -->
+        <section id="contacto" class="section section--tinted" aria-labelledby="titulo-contacto">
+            <div class="wrap grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+                <div data-reveal>
+                    <p class="eyebrow">Fale comigo</p>
+                    <h2 id="titulo-contacto" class="t-h2 mb-4">Vamos construir algo incrível juntos</h2>
+                    <p class="t-body mb-8">Tem um projecto em mente? Conte-me a sua ideia — respondo com a proposta mais adequada. Antes do envio, é-lhe pedida uma confirmação.</p>
+
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="mailto:francisco.garcia@cisdsolucoes.com" class="flex items-center gap-4 group">
+                                <span class="icon-btn shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span>
+                                <span><span class="block t-caption">E-mail profissional</span><span class="text-ink font-medium break-all">francisco.garcia@cisdsolucoes.com</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:francisco.grcia.ao@gmail.com" class="flex items-center gap-4 group">
+                                <span class="icon-btn shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+                                <span><span class="block t-caption">E-mail pessoal</span><span class="text-ink font-medium break-all">francisco.grcia.ao@gmail.com</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+244926772547" class="flex items-center gap-4 group">
+                                <span class="icon-btn shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                                <span><span class="block t-caption">Telefone</span><span class="text-ink font-medium">+244 926 77 25 47</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/francisco-garcia-98b595246/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
+                                <span class="icon-btn shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
+                                <span><span class="block t-caption">LinkedIn</span><span class="text-ink font-medium">Francisco Garcia</span><span class="sr-only"> (abre num novo separador)</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
+                                <span class="icon-btn shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary"><i class="fa-brands fa-github" aria-hidden="true"></i></span>
+                                <span><span class="block t-caption">GitHub</span><span class="text-ink font-medium">FranciscoGrcia</span><span class="sr-only"> (abre num novo separador)</span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/244926772547" target="_blank" rel="noopener noreferrer" class="btn btn--outline mt-8">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <span class="btn__label">Falar pelo WhatsApp</span>
+                        <span class="sr-only">(+244 926 77 25 47, abre num novo separador)</span>
+                    </a>
+                </div>
+
+                <form id="contactForm" novalidate class="card grid sm:grid-cols-2 gap-5 !p-6 sm:!p-10" data-reveal data-reveal-delay="150" aria-describedby="form-nota">
+                    <div class="field">
+                        <label for="name" class="field__label">Nome <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="name" name="name" required autocomplete="name" class="field__input" aria-describedby="name-erro">
+                        <span id="name-erro" class="field__error" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="telefone" class="field__label">Telefone <span class="req" aria-hidden="true">*</span></label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="+244 9xx xxx xxx" required autocomplete="tel" inputmode="tel" class="field__input" aria-describedby="telefone-erro">
+                        <span id="telefone-erro" class="field__error" role="alert"></span>
+                    </div>
+
+                    <div class="field sm:col-span-2">
+                        <label for="email" class="field__label">E-mail <span class="req" aria-hidden="true">*</span></label>
+                        <input type="email" id="email" name="email" required autocomplete="email" class="field__input" aria-describedby="email-erro">
+                        <span id="email-erro" class="field__error" role="alert"></span>
+                    </div>
+
+                    <div class="field sm:col-span-2">
+                        <label for="mensagem" class="field__label">Mensagem <span class="req" aria-hidden="true">*</span></label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required class="field__input" aria-describedby="mensagem-erro"></textarea>
+                        <span id="mensagem-erro" class="field__error" role="alert"></span>
+                    </div>
+
+                    <div class="sm:col-span-2 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <p id="form-nota" class="t-caption">Campos marcados com <span class="t-accent">*</span> são obrigatórios.</p>
+                        <button type="submit" id="submitBtn" class="btn btn--primary">
+                            <span class="btn__label">Enviar mensagem</span>
+                            <svg class="btn__spinner" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25"></circle>
+                                <path fill="currentColor" opacity=".85" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== RODAPÉ ===================== -->
+    <footer class="footer">
+        <div class="wrap footer__inner">
+            <div>
+                <a href="#inicio" class="navbar__brand"><span class="navbar__mark" aria-hidden="true">FG</span> Francisco Garcia</a>
+                <p class="t-caption mt-3">&copy; <span id="anoActual">2026</span> Francisco Garcia. Todos os direitos reservados.</p>
+            </div>
+            <nav aria-label="Navegação do rodapé"><ul class="footer__links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#portfolio">Projectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul></nav>
+            <nav class="flex items-center gap-3" aria-label="Redes sociais">
+                <a href="https://github.com/FranciscoGrcia" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/francisco-garcia-98b595246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/franccisco04/?hl=pt" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre num novo separador)" class="icon-btn"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Região de feedback (toasts) -->
+    <div id="toastRegion" class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/244926772547" target="_blank" rel="noopener noreferrer" id="whatsappFab" class="whatsapp-fab"
+       aria-label="Falar pelo WhatsApp com Francisco Garcia: +244 926 77 25 47 (abre num novo separador)">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        <span class="whatsapp-fab__tooltip" aria-hidden="true">Falar pelo WhatsApp</span>
+    </a>
+
+    <!-- Voltar ao topo -->
+    <button id="backToTop" type="button" class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Modal de detalhes do projecto -->
+    <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+        <div class="modal__overlay" data-modal-close></div>
+        <div class="modal__panel">
+            <button type="button" class="modal__close" data-modal-close aria-label="Fechar detalhes do projecto">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <img id="modalImg" src="assets/images/projects/cisd.png" alt="" class="modal__media" width="1600" height="900">
+            <div class="modal__body">
+                <h3 id="modalTitle" class="t-h3">Projecto</h3>
+                <p id="modalDesc" class="t-small"></p>
+                <p id="modalRole" class="t-caption"></p>
+                <ul id="modalTags" class="badge-list"></ul>
+                <div>
+                    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                        <span class="btn__label">Visitar website</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square btn__icon" aria-hidden="true"></i>
+                        <span class="sr-only">(abre num novo separador)</span>
+                    </a>
+                    <p id="modalSoon" class="badge" hidden>
+                        <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Projecto em breve online
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de detalhes do serviço -->
+    <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+        <div class="modal__overlay" data-service-close></div>
+        <div class="modal__panel">
+            <button type="button" class="modal__close" data-service-close aria-label="Fechar detalhes do serviço">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <div class="modal__body">
+                <div id="serviceModalIcon" class="card__icon !mb-0" aria-hidden="true"></div>
+                <h3 id="serviceModalTitle" class="t-h3">Serviço</h3>
+                <div id="serviceModalContent" class="flex flex-col gap-3"></div>
+                <div>
+                    <a id="serviceModalQuote" href="#contacto" class="btn btn--primary btn-orcamento" data-service="">
+                        <span class="btn__label">Solicitar orçamento</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmação de envio -->
+    <div id="confirmModal" class="modal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmDesc">
+        <div class="modal__overlay" data-confirm-cancel></div>
+        <div class="modal__panel modal__panel--sm text-center p-8">
+            <div class="card__icon mx-auto"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></div>
+            <h3 id="confirmTitle" class="t-h3 mb-2">Confirmar envio?</h3>
+            <p id="confirmDesc" class="t-small mb-7">A sua mensagem será enviada para Francisco Garcia. Confirma os dados preenchidos?</p>
+            <div class="flex gap-3">
+                <button id="confirmCancel" type="button" class="btn btn--outline flex-1" data-confirm-cancel><span class="btn__label">Rever</span></button>
+                <button id="confirmSend" type="button" class="btn btn--primary flex-1">
+                    <span class="btn__label">Confirmar</span>
+                    <svg class="btn__spinner" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25"></circle>
+                        <path fill="currentColor" opacity=".85" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

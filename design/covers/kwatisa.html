@@ -1,0 +1,92 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{background:
+  radial-gradient(700px 520px at 30% 40%, rgba(108,43,217,.42), transparent 65%),
+  radial-gradient(600px 500px at 85% 85%, rgba(160,110,255,.22), transparent 60%),
+  #0D0A16;position:relative;font-family:Georgia,serif}
+.grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 30%,transparent 75%)}
+.stage{position:absolute;inset:0;perspective:1800px}
+.plane{position:absolute;left:100px;top:115px;width:1300px;height:760px;transform:rotateX(18deg) rotateZ(-8deg) rotateY(-6deg);transform-style:preserve-3d}
+.p{position:absolute;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08) inset;overflow:hidden}
+/* browser window */
+.browser{left:260px;top:90px;width:700px;height:470px;background:#fff}
+.bar{height:36px;background:#f1eef8;display:flex;align-items:center;gap:7px;padding:0 14px}
+.bar span{width:10px;height:10px;border-radius:50%;background:#d6cfe6}
+.bar em{margin-left:16px;width:260px;height:14px;border-radius:7px;background:#fff}
+.bhero{height:250px;background:linear-gradient(135deg,#6C2BD9,#3E138F);padding:46px 40px;position:relative}
+.bhero b{display:block;height:22px;border-radius:5px;background:#fff;margin-bottom:12px}
+.bhero p{height:8px;border-radius:4px;background:rgba(255,255,255,.6);margin:9px 0;width:330px}
+.bhero .btns{display:flex;gap:10px;margin-top:20px}
+.bhero .btns i{width:110px;height:30px;border-radius:15px;background:#fff}
+.bhero .btns i+i{background:transparent;border:2px solid rgba(255,255,255,.75)}
+.bhero:after{content:"";position:absolute;right:40px;top:40px;width:170px;height:170px;border-radius:50%;border:26px solid rgba(255,255,255,.14)}
+.bsvc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:22px 40px}
+.bsvc div{border:1px solid #ebe6f5;border-radius:10px;padding:12px}
+.bsvc span{display:block;width:16px;height:16px;border-radius:5px;background:#6C2BD9;margin-bottom:10px}
+.bsvc i{display:block;height:6px;border-radius:3px;background:#ddd6ec;margin:6px 0}
+/* brand board */
+.brand{left:-10px;top:300px;width:330px;height:380px;background:#17122A;padding:26px;transform:translateZ(60px)}
+.aa{font-size:110px;line-height:1;color:#fff;font-weight:700;letter-spacing:-4px}
+.aa small{font-size:110px;color:#B693FF}
+.sw{display:flex;gap:10px;margin-top:26px}
+.sw span{width:52px;height:52px;border-radius:14px}
+.lines i{display:block;height:7px;border-radius:4px;background:rgba(255,255,255,.18);margin-top:12px}
+/* social post */
+.post{left:990px;top:70px;width:270px;height:340px;background:#fff;transform:translateZ(90px)}
+.post .head{display:flex;align-items:center;gap:10px;padding:14px}
+.post .av{width:30px;height:30px;border-radius:50%;background:#6C2BD9}
+.post .head i{display:block;width:90px;height:7px;border-radius:4px;background:#ddd6ec}
+.post .img{height:190px;background:
+  radial-gradient(circle at 70% 35%,#C9A9FF 0 34px,transparent 35px),
+  linear-gradient(160deg,#2A1260,#6C2BD9)}
+.post .act{display:flex;gap:10px;padding:14px}
+.post .act span{width:18px;height:18px;border-radius:50%;border:2px solid #6C2BD9}
+/* analytics */
+.chart{left:880px;top:430px;width:400px;height:250px;background:#17122A;padding:24px;transform:translateZ(120px)}
+.chart .t{width:140px;height:8px;border-radius:4px;background:rgba(255,255,255,.35)}
+.chart svg{margin-top:20px}
+.bars{display:flex;gap:10px;align-items:flex-end;height:40px;margin-top:4px}
+.glowline{position:absolute;left:0;right:0;top:560px;height:2px;background:linear-gradient(90deg,transparent,rgba(182,147,255,.55),transparent);transform:rotate(-8deg)}
+.orb{position:absolute;width:16px;height:16px;border-radius:50%;background:#B693FF;box-shadow:0 0 30px #8b5cf6}
+</style></head><body>
+<div class="grid"></div>
+<div class="stage"><div class="plane">
+  <div class="p browser">
+    <div class="bar"><span></span><span></span><span></span><em></em></div>
+    <div class="bhero"><b style="width:380px"></b><b style="width:290px"></b><p></p><p style="width:260px"></p><div class="btns"><i></i><i></i></div></div>
+    <div class="bsvc">
+      <div><span></span><i></i><i style="width:70%"></i></div>
+      <div><span></span><i></i><i style="width:70%"></i></div>
+      <div><span></span><i></i><i style="width:70%"></i></div>
+    </div>
+  </div>
+  <div class="p brand">
+    <div class="aa">A<small>a</small></div>
+    <div class="sw"><span style="background:#6C2BD9"></span><span style="background:#B693FF"></span><span style="background:#F4F0FB"></span><span style="background:#2A1260"></span></div>
+    <div class="lines"><i></i><i style="width:75%"></i><i style="width:55%"></i></div>
+  </div>
+  <div class="p post">
+    <div class="head"><span class="av"></span><i></i></div>
+    <div class="img"></div>
+    <div class="act"><span></span><span></span><span></span></div>
+  </div>
+  <div class="p chart">
+    <div class="t"></div>
+    <svg width="352" height="150" viewBox="0 0 352 150">
+      <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8B5CF6" stop-opacity=".55"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></linearGradient></defs>
+      <g stroke="rgba(255,255,255,.08)"><line x1="0" x2="352" y1="30" y2="30"/><line x1="0" x2="352" y1="75" y2="75"/><line x1="0" x2="352" y1="120" y2="120"/></g>
+      <path d="M0 125 C40 118 60 100 95 104 S150 70 185 78 S240 40 275 46 S320 20 352 16 L352 150 L0 150Z" fill="url(#g)"/>
+      <path d="M0 125 C40 118 60 100 95 104 S150 70 185 78 S240 40 275 46 S320 20 352 16" fill="none" stroke="#B693FF" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="275" cy="46" r="7" fill="#fff" stroke="#6C2BD9" stroke-width="4"/>
+    </svg>
+  </div>
+</div></div>
+<div class="orb" style="left:120px;top:150px"></div>
+<div class="orb" style="left:1480px;top:700px;width:10px;height:10px"></div>
+</body></html>

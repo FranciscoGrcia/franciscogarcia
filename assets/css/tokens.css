@@ -1,0 +1,172 @@
+/* =========================================================================
+   tokens.css — Design System "Bold + Minimalista Premium"
+   Fonte única de verdade para cores, tipografia, espaçamento, raios,
+   sombras, transições e camadas. O Tailwind (index.html) e o style.css
+   consomem estes tokens — para mudar o visual, altere apenas aqui.
+
+   Contraste verificado (WCAG 2.1):
+   - text / bg ................. 18.1 : 1  (AAA)
+   - text-secondary / bg ....... 10.3 : 1  (AAA)
+   - text-tertiary / bg ......... 6.2 : 1  (AA)
+   - branco / primary ........... 7.0 : 1  (AAA) — botões primários
+   - primary-text / bg .......... 6.9 : 1  (AA)  — links e realces em texto
+   - bg / secondary (amarelo) .. 11.8 : 1  (AAA)
+   Nota: o roxo base (#6C2BD9) sobre o fundo escuro tem só 2.7 : 1, por isso
+   NUNCA é usado como cor de texto — para texto usa-se --color-primary-text.
+   ========================================================================= */
+
+:root {
+    /* ---- Cores: marca -------------------------------------------------- */
+    --color-primary: #6C2BD9;
+    --color-primary-rgb: 108 43 217;
+    --color-primary-hover: #5720B7;
+    --color-primary-hover-rgb: 87 32 183;
+    --color-primary-text: #A98BF5;      /* roxo claro para texto sobre escuro */
+    --color-primary-text-rgb: 169 139 245;
+    --color-secondary: #FDC400;         /* amarelo — usar com moderação */
+    --color-secondary-rgb: 253 196 0;
+
+    /* ---- Cores: superfícies ------------------------------------------- */
+    --color-bg: #0B1020;
+    --color-bg-rgb: 11 16 32;
+    --color-surface: #151C2E;
+    --color-surface-rgb: 21 28 46;
+    --color-surface-elevated: #202A40;
+    --color-surface-elevated-rgb: 32 42 64;
+    --color-border: #303B52;
+    --color-border-rgb: 48 59 82;
+
+    /* ---- Cores: texto -------------------------------------------------- */
+    --color-text: #F8FAFC;
+    --color-text-rgb: 248 250 252;
+    --color-text-secondary: #B6C0D2;
+    --color-text-secondary-rgb: 182 192 210;
+    --color-text-tertiary: #8A94AA;
+    --color-text-tertiary-rgb: 138 148 170;
+    --color-on-primary: #FFFFFF;
+    --color-on-secondary: #0B1020;
+
+    /* ---- Cores: feedback ---------------------------------------------- */
+    --color-success: #16A34A;
+    --color-success-text: #4ADE80;      /* versão legível sobre fundo escuro */
+    --color-error: #DC2626;
+    --color-error-text: #F87171;
+    --color-warning: #F59E0B;
+    --color-info: #2563EB;
+
+    /* ---- Cores de marca dos projectos (preservadas) ------------------- */
+    --brand-cisd-navy: #000D74;
+    --brand-cisd-navy-rgb: 0 13 116;
+    --brand-cisd-yellow: #FDC400;
+    --brand-kwatisa: #6C2BD9;
+
+    /* ---- Tipografia ---------------------------------------------------- */
+    --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Escala fluida: mínimo mobile → máximo desktop */
+    --text-display: clamp(2.5rem, 1.6rem + 3.8vw, 4.25rem);   /* 40 → 68px */
+    --text-h1: clamp(2.25rem, 1.7rem + 2.4vw, 3.25rem);       /* 36 → 52px */
+    --text-h2: clamp(1.875rem, 1.55rem + 1.3vw, 2.5rem);      /* 30 → 40px */
+    --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);      /* 20 → 26px */
+    --text-body-lg: clamp(1.0625rem, 1rem + 0.25vw, 1.125rem);/* 17 → 18px */
+    --text-body: 1rem;                                         /* 16px */
+    --text-small: 0.9375rem;                                   /* 15px */
+    --text-caption: 0.8125rem;                                 /* 13px */
+    --text-overline: 0.75rem;                                  /* 12px */
+    --text-button: 0.9375rem;                                  /* 15px */
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    --leading-tight: 1.08;
+    --leading-snug: 1.25;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.75;
+
+    --tracking-tight: -0.025em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.18em;
+
+    /* ---- Espaçamento (base 4px) --------------------------------------- */
+    --space-1: 0.25rem;   /* 4  */
+    --space-2: 0.5rem;    /* 8  */
+    --space-3: 0.75rem;   /* 12 */
+    --space-4: 1rem;      /* 16 */
+    --space-5: 1.25rem;   /* 20 */
+    --space-6: 1.5rem;    /* 24 */
+    --space-8: 2rem;      /* 32 */
+    --space-10: 2.5rem;   /* 40 */
+    --space-12: 3rem;     /* 48 */
+    --space-16: 4rem;     /* 64 */
+    --space-20: 5rem;     /* 80 */
+    --space-24: 6rem;     /* 96 */
+    --space-32: 8rem;     /* 128 */
+
+    /* ---- Layout -------------------------------------------------------- */
+    --container-max: 80rem;           /* 1280px */
+    --container-narrow: 48rem;        /* 768px — formulários e CTA */
+    --container-gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
+    --grid-gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    --section-space: clamp(4.5rem, 3rem + 6vw, 8rem);
+    --card-padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    --header-height: 5rem;            /* 80px — usado no offset do scroll */
+
+    /* Breakpoints (referência; CSS custom properties não funcionam em
+       @media, por isso os valores são repetidos como literais abaixo e
+       coincidem com os do Tailwind: sm 640 · md 768 · lg 1024 · xl 1280) */
+    --bp-sm: 640px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+
+    /* ---- Raios --------------------------------------------------------- */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-full: 999px;
+
+    /* ---- Sombras ------------------------------------------------------- */
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+    --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.55);
+    --shadow-elevated: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+    --shadow-glow: 0 10px 40px -12px rgb(var(--color-primary-rgb) / 0.55);
+    --shadow-glow-secondary: 0 10px 40px -14px rgb(var(--color-secondary-rgb) / 0.45);
+
+    /* ---- Movimento ----------------------------------------------------- */
+    --duration-fast: 150ms;
+    --duration-base: 250ms;
+    --duration-slow: 500ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-base: var(--duration-base) var(--ease-standard);
+
+    /* ---- Camadas (z-index) -------------------------------------------- */
+    --z-base: 1;
+    --z-sticky: 40;
+    --z-header: 50;
+    --z-overlay: 60;
+    --z-modal: 70;
+    --z-toast: 80;
+
+    /* ---- Foco ---------------------------------------------------------- */
+    --focus-ring-color: var(--color-primary-text);
+    --focus-ring: 0 0 0 3px rgb(var(--color-bg-rgb)), 0 0 0 5px var(--focus-ring-color);
+
+    /* ---- Tokens de componentes ---------------------------------------- */
+    --btn-height: 3rem;               /* 48px — área de toque confortável */
+    --btn-height-sm: 2.5rem;          /* 40px */
+    --btn-padding-x: 1.5rem;
+    --btn-radius: var(--radius-full);
+    --input-height: 3rem;
+    --input-radius: var(--radius-md);
+    --card-radius: var(--radius-xl);
+    --card-bg: var(--color-surface);
+    --card-border: var(--color-border);
+    --badge-radius: var(--radius-full);
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{
+  background:
+    radial-gradient(900px 600px at 78% 30%, rgba(253,196,0,.13), transparent 60%),
+    radial-gradient(1000px 700px at 10% 100%, rgba(40,70,255,.25), transparent 60%),
+    linear-gradient(160deg,#000A5C 0%,#000D74 40%,#00073F 100%);
+  position:relative;font-family:sans-serif;
+}
+/* architecture: tall glass towers in perspective */
+.city{position:absolute;inset:0;perspective:1400px;perspective-origin:50% 120%}
+.tower{position:absolute;bottom:0;background:
+  repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 2px, transparent 2px 46px),
+  repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 38px),
+  linear-gradient(180deg, rgba(120,150,255,.16), rgba(0,10,80,.0));
+  border-left:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(255,255,255,.06)}
+.t1{left:40px;width:300px;height:820px;transform:skewY(-4deg)}
+.t2{left:300px;width:220px;height:640px;opacity:.7;transform:skewY(3deg)}
+.t3{right:20px;width:360px;height:900px;opacity:.55;transform:skewY(5deg)}
+.t4{right:330px;width:180px;height:560px;opacity:.45}
+.fade{position:absolute;inset:0;background:linear-gradient(0deg,#00052e 0%,rgba(0,5,46,.6) 30%,transparent 65%)}
+.desk{position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,#0a1240,#030620);border-top:1px solid rgba(255,255,255,.08)}
+.desk:before{content:"";position:absolute;left:30%;right:8%;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(253,196,0,.45),transparent)}
+
+/* laptop */
+.laptop{position:absolute;left:560px;top:120px;width:900px}
+.lid{width:900px;height:570px;background:#0b0f1e;border-radius:22px;padding:20px;box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 2px #262b3d inset,0 0 120px rgba(253,196,0,.08)}
+.screen{width:100%;height:100%;border-radius:8px;overflow:hidden;background:#fff;position:relative}
+.base{width:1040px;height:28px;margin-left:-70px;background:linear-gradient(180deg,#3a3f52,#1b1e2a);border-radius:0 0 26px 26px;position:relative;box-shadow:0 30px 50px rgba(0,0,0,.6)}
+.base:before{content:"";position:absolute;left:50%;top:0;width:150px;height:9px;margin-left:-75px;background:#11131c;border-radius:0 0 10px 10px}
+
+/* site skeleton (no readable text) */
+.nav{height:46px;background:#000D74;display:flex;align-items:center;padding:0 22px;gap:14px}
+.logo{width:30px;height:22px;border-radius:5px;background:#FDC400}
+.logo2{width:70px;height:8px;border-radius:4px;background:rgba(255,255,255,.85)}
+.links{margin-left:auto;display:flex;gap:16px}
+.links i{display:block;width:42px;height:6px;border-radius:3px;background:rgba(255,255,255,.5)}
+.navbtn{width:70px;height:22px;border-radius:12px;background:#FDC400}
+.hero{height:290px;position:relative;background:
+  linear-gradient(90deg,rgba(0,13,116,.96) 0%,rgba(0,13,116,.75) 50%,rgba(0,13,116,.25) 100%),
+  repeating-linear-gradient(90deg,#1b2a8a 0 30px,#24379e 30px 34px),
+  linear-gradient(#26338f,#0b1660);padding:54px 40px}
+.hero b{display:block;height:24px;border-radius:5px;background:#fff;margin-bottom:12px}
+.hero .y{background:#FDC400}
+.hero p{height:8px;border-radius:4px;background:rgba(255,255,255,.55);margin:10px 0;width:300px}
+.cta{display:flex;gap:12px;margin-top:22px}
+.cta i{display:block;width:110px;height:30px;border-radius:16px;background:#FDC400}
+.cta i+i{background:transparent;border:2px solid rgba(255,255,255,.7)}
+.sec{padding:22px 40px;background:#f4f6fb}
+.sec .h{width:160px;height:12px;border-radius:6px;background:#000D74;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:#fff;border-radius:10px;padding:14px;box-shadow:0 4px 14px rgba(0,13,116,.1)}
+.card .ic{width:28px;height:28px;border-radius:8px;background:#FDC400;margin-bottom:12px}
+.card i{display:block;height:6px;border-radius:3px;background:#c9cfe2;margin:7px 0}
+.card i:first-of-type{background:#000D74;width:70%;height:8px}
+
+/* phone */
+.phone{position:absolute;left:250px;top:250px;width:250px;height:510px;border-radius:38px;background:#0b0f1e;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 2px #2a2f42 inset;transform:rotate(-6deg)}
+.pscreen{width:100%;height:100%;border-radius:28px;overflow:hidden;background:#f4f6fb}
+.pnav{height:44px;background:#000D74;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.pnav span{width:24px;height:18px;border-radius:4px;background:#FDC400}
+.pnav em{width:22px;height:12px;border-top:3px solid #fff;border-bottom:3px solid #fff}
+.phero{height:210px;background:linear-gradient(180deg,#000D74,#0b1a8e);padding:28px 18px}
+.phero b{display:block;height:16px;border-radius:4px;background:#fff;margin-bottom:9px}
+.phero .y{background:#FDC400;width:70%}
+.phero i{display:block;width:96px;height:24px;border-radius:12px;background:#FDC400;margin-top:20px}
+.pcard{margin:14px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 4px 12px rgba(0,13,116,.12);display:flex;gap:12px;align-items:center}
+.pcard span{width:30px;height:30px;border-radius:8px;background:#FDC400;flex:none}
+.pcard i{display:block;height:7px;border-radius:4px;background:#c9cfe2;width:120px}
+.pcard i+i{width:80px;margin-top:7px}
+.glow{position:absolute;right:120px;top:60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(253,196,0,.18),transparent 70%)}
+</style></head><body>
+<div class="city"><div class="tower t1"></div><div class="tower t2"></div><div class="tower t3"></div><div class="tower t4"></div></div>
+<div class="fade"></div><div class="glow"></div>
+<div class="desk"></div>
+<div class="laptop">
+  <div class="lid"><div class="screen">
+    <div class="nav"><span class="logo"></span><span class="logo2"></span><span class="links"><i></i><i></i><i></i><i></i></span><span class="navbtn"></span></div>
+    <div class="hero"><b style="width:420px"></b><b class="y" style="width:300px"></b><p></p><p style="width:240px"></p><div class="cta"><i></i><i></i></div></div>
+    <div class="sec"><div class="h"></div><div class="cards">
+      <div class="card"><div class="ic"></div><i></i><i></i><i style="width:60%"></i></div>
+      <div class="card"><div class="ic"></div><i></i><i></i><i style="width:60%"></i></div>
+      <div class="card"><div class="ic"></div><i></i><i></i><i style="width:60%"></i></div>
+      <div class="card"><div class="ic"></div><i></i><i></i><i style="width:60%"></i></div>
+    </div></div>
+  </div></div>
+  <div class="base"></div>
+</div>
+<div class="phone"><div class="pscreen">
+  <div class="pnav"><span></span><em></em></div>
+  <div class="phero"><b></b><b></b><b class="y"></b><i></i></div>
+  <div class="pcard"><span></span><div><i></i><i></i></div></div>
+  <div class="pcard"><span></span><div><i></i><i></i></div></div>
+</div></div>
+</body></html>
